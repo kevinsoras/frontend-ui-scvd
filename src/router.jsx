@@ -1,11 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Login, LoginAction } from "./routes/Login";
 import { NotFoundPage } from "./routes/NotFoundPage";
+import { UploadPage, UploadPageLoad } from "./routes/UploadPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Prueba</div>
+    element: <UploadPage />,
+    loader:UploadPageLoad
   },
   {
     path:"/login",

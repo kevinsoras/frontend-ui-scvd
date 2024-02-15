@@ -1,5 +1,5 @@
 import { URL_BASE, tokenKey } from "./constants";
-import jwt_decode from 'jwt-decode';
+import {jwtDecode}  from "jwt-decode";
 
 const savedToken = window.localStorage.getItem(tokenKey);
 
@@ -37,9 +37,10 @@ export const authProvider = {
   getTokenData(){
     const token = localStorage.getItem(tokenKey);
     if (token) {
-      return jwt_decode(token);
+      return jwtDecode(token);
     } else {
       return null;
     }
-  }
+  },
+
 };
