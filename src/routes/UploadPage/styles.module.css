@@ -1,0 +1,72 @@
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.container {
+  width: 85%;
+  height: 85%;
+  display: flex;
+  border-radius: var(--rounded-md, 6px);
+  border: 3px solid var(--border, #222123);
+  justify-content: center;
+}
+.title {
+  box-sizing: border-box;
+  width: 100%;
+  padding-left: 5%;
+  margin-bottom: 25px;
+  display: flex;
+  color: var(--foreground, #171717);
+
+  /* display-4xl/leading-none/semibold */
+  font-family: "Familjen Grotesk";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 36px; /* 100% */
+}
+.box-container {
+  flex-direction: column;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.box-upload {
+  padding-top: 10px;
+  align-items: center;
+  display: flex;
+  gap: 5px;
+}
+.box-upload-message {
+  white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+  overflow: hidden; /* Oculta el texto que sobresale del contenedor */
+  text-overflow: ellipsis; /* Agrega puntos suspensivos (...) al final del texto truncado */
+  width: 240px; /* Ancho máximo del contenedor */
+  font-size: 14px;
+}
+.button-upload {
+  cursor: pointer;
+  display: flex;
+  height: 44px;
+  padding: var(--spacing-2, 8px) var(--spacing-8, 32px);
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-2, 8px);
+  align-self: stretch;
+  border-radius: var(--rounded-md, 6px);
+  border: none;
+  /* text-sm/leading-5/medium */
+  color: var(--primary-foreground, #fff);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+}
+.button-upload {
+  background: var(--primary, #6d28d9);
+}
