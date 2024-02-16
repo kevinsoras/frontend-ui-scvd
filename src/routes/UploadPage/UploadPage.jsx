@@ -19,7 +19,7 @@ export async function load() {
   }
 }
 
-function UploadPage({ sendDataTest }) {
+function UploadPage() {
   const fileInputRef = useRef(null);
   const file = useRef(null);
   const [changeToRegister, setChangeToRegister] = useState(null);
@@ -40,10 +40,8 @@ function UploadPage({ sendDataTest }) {
         const formData = new FormData();
         formData.append("file", file.current);
         const data = await uploadFile(formData);
-        sendDataTest(data);
         setChangeToRegister(data);
       } catch (error) {
-        sendDataTest(error);
         console.log(error);
       }
     }
