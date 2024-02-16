@@ -19,7 +19,7 @@ export async function load() {
   }
 }
 
-function UploadPage() {
+function UploadPage({ sendDataTest }) {
   const fileInputRef = useRef(null);
   const file = useRef(null);
   const [changeToRegister, setChangeToRegister] = useState(null);
@@ -29,7 +29,7 @@ function UploadPage() {
     fileInputRef.current.value = null;
     fileInputRef.current.click();
   };
-  const handleFileChange = async(event) => {
+  const handleFileChange = async (event) => {
     file.current = null;
     setMessage(event.target.files[0].name);
     file.current = event.target.files[0];
@@ -40,8 +40,10 @@ function UploadPage() {
         const formData = new FormData();
         formData.append("file", file.current);
         const data = await uploadFile(formData);
+        sendDataTest(data);
         setChangeToRegister(data);
       } catch (error) {
+        sendDataTest(error);
         console.log(error);
       }
     }
@@ -54,10 +56,11 @@ function UploadPage() {
         </div>
         <div className={styles.container}>
           {changeToRegister ? (
-            <RegisterCharge initialData={changeToRegister}/>
+            <RegisterCharge initialData={changeToRegister} />
           ) : (
             <div className={styles["box-container"]}>
               <input
+                data-testid="files"
                 type="file"
                 ref={fileInputRef}
                 accept=".csv"
@@ -67,17 +70,19 @@ function UploadPage() {
               <h1>Seleccionar un archivo de carga</h1>
               <div className={styles["box-upload"]}>
                 <button
+                  data-testid="button-chose"
                   className={styles["button-upload"]}
                   onClick={handleButtonClick}
                 >
                   Chose File
                 </button>
-                <p className={styles["box-upload-message"]}>
+                <p data-testid="name-file-chosen" className={styles["box-upload-message"]}>
                   {message == "" ? "No file chosen" : message}
                 </p>
               </div>
               <hr />
               <button
+                id="button-upload"
                 className={styles["button-upload"]}
                 onClick={handleUpload}
               >
